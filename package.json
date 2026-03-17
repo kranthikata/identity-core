@@ -1,0 +1,34 @@
+{
+  "name": "identity-core",
+  "version": "1.0.0",
+  "main": "dist/app.js",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/app.ts",
+    "build": "tsc",
+    "start": "node dist/app.js",
+    "test": "vitest"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "auth",
+    "jwt",
+    "backend"
+  ],
+  "author": "Kranthi Kumar Kata",
+  "license": "MIT",
+  "description": "A secure JWT-based authentication system for Node.js.",
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.5.0",
+    "nodemon": "^3.1.14",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.0"
+  },
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1"
+  }
+}
