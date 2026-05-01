@@ -59,13 +59,53 @@ src/
 
 ## 🧠 Database Layer
 
-The database access layer is strucutred as:
+The database access layer is structured as:
 
 ```text
 src/
 ├── db/
 │   └── prisma.ts
 ```
+
+---
+
+## 📋 Constants Layer
+
+A centralized constants system for consistent API responses:
+
+```text
+src/
+├── constants/
+│   ├── http.ts       # HTTP status codes
+│   ├── messages.ts   # Application messages
+│   └── index.ts      # Barrel exports
+```
+
+### Features:
+
+- **HTTP Status Codes**: Standardized status codes (200, 201, 400, 401, 404, 500, etc.)
+- **Application Messages**: Reusable message strings for auth, validation, and server responses
+- **Type Safety**: All constants are typed with `as const` for compile-time safety
+
+---
+
+## 🛡️ Middleware Layer
+
+Cross-cutting concerns handled via Express middleware:
+
+```text
+src/
+├── middleware/
+│   ├── logger.ts         # Request/response logging
+│   ├── errorHandler.ts   # Centralized error handling
+│   └── index.ts          # Barrel exports
+```
+
+### Features:
+
+- **Request Logger**: Logs incoming requests with timing, status codes, and structured JSON output for production
+- **Error Handler**: Custom `AppError` class for operational errors, centralized error response formatting
+- **404 Handler**: Standardized response for undefined routes
 
 ---
 
@@ -79,9 +119,17 @@ identity-core/
 ├── src/
 |   ├── config/         # Environment validation & configuration
 │   │   └── env.ts
+│   ├── constants/      # Application constants (HTTP codes, messages)
+│   │   ├── http.ts
+│   │   ├── messages.ts
+│   │   └── index.ts
 │   ├── db/             # Database layer (Prisma client)
 │   │   └── prisma.ts
-│   └── app.ts          # Server entry point
+│   ├── middleware/     # Express middleware (logging, error handling)
+│   │   ├── logger.ts
+│   │   ├── errorHandler.ts
+│   │   └── index.ts
+│   └── app.ts          # Server entry point with middleware chain
 ├── dist/               # Compiled JavaScript (Production-ready)
 ├── .env.example        # Template for environment variables
 ├── tsconfig.json       # TypeScript configuration (NodeNext)
